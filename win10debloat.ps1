@@ -433,7 +433,7 @@ $pessentialtweaks = New-Object system.Windows.Forms.Button
 $pessentialtweaks.text = "P Essential Tweaks"
 $pessentialtweaks.width = 200
 $pessentialtweaks.height = 115
-$pessentialtweaks.location = New-Object System.Drawing.Point(24, 55)
+$pessentialtweaks.location = New-Object System.Drawing.Point(24, 20)
 $pessentialtweaks.Font = New-Object System.Drawing.Font('Microsoft Sans Serif', 14)
 
 
