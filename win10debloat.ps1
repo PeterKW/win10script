@@ -146,7 +146,7 @@ $Label2.Font = New-Object System.Drawing.Font('Microsoft Sans Serif', 10)
 $PanelPTweaks = New-Object system.Windows.Forms.Panel
 $PanelPTweaks.height = 159
 $PanelPTweaks.width = 588
-$PanelPTweaks.location = New-Object System.Drawing.Point(478, 000) #600
+$PanelPTweaks.location = New-Object System.Drawing.Point(478, 600) #600
 
 $Panel2 = New-Object system.Windows.Forms.Panel
 $Panel2.height = 159
@@ -425,7 +425,7 @@ $LabelPTweaks.text = "P Essential Tweaks"
 $LabelPTweaks.AutoSize = $true
 $LabelPTweaks.width = 169
 $LabelPTweaks.height = 23
-$LabelPTweaks.location = New-Object System.Drawing.Point(20, 50)
+$LabelPTweaks.location = New-Object System.Drawing.Point(449, 541)
 $LabelPTweaks.Font = New-Object System.Drawing.Font('Microsoft Sans Serif', 24)
 
 
