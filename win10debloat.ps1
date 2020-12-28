@@ -429,6 +429,14 @@ $LabelPTweaks.location = New-Object System.Drawing.Point(20, 200)
 $LabelPTweaks.Font = New-Object System.Drawing.Font('Microsoft Sans Serif', 24)
 
 
+$pessentialtweaks = New-Object system.Windows.Forms.Button
+$pessentialtweaks.text = "P Essential Tweaks"
+$pessentialtweaks.width = 200
+$pessentialtweaks.height = 115
+$pessentialtweaks.location = New-Object System.Drawing.Point(24, 200)
+$pessentialtweaks.Font = New-Object System.Drawing.Font('Microsoft Sans Serif', 14)
+
+
 $Form.controls.AddRange(@($Panel1, $Label1, $Panel2, $Label3, $Panel3, $Label4, $Label15, $Panel4, $Label20, $Label21, $Label23, $PictureBox1, $PanelPTweaks, $LabelPTweaks))
 $Panel1.controls.AddRange(@($installchoco, $brave, $firefox, $7zip, $irfanview, $adobereader, $notepad, $gchrome, $mpc, $vlc, $powertoys, $winterminal, $vscode, $Label2))
 $Panel2.controls.AddRange(@($essentialtweaks, $backgroundapps, $cortana, $windowssearch, $actioncenter, $darkmode, $visualfx, $onedrive, $Label22, $lightmode))
@@ -795,7 +803,7 @@ $essentialtweaks.Add_Click( {
 		$wshell.Popup("Operation Completed", 0, "Done", 0x0)
 	})
 
-$essentialtweaks.Add_Click( {
+$pessentialtweaks.Add_Click( {
 		Write-Host "Creating Restore Point incase something bad happens"
 		Enable-ComputerRestore -Drive "C:\"
 		Checkpoint-Computer -Description "RestorePoint1" -RestorePointType "MODIFY_SETTINGS"
