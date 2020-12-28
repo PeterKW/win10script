@@ -425,7 +425,7 @@ $LabelPTweaks.text = "P Essential Tweaks"
 $LabelPTweaks.AutoSize = $true
 $LabelPTweaks.width = 169
 $LabelPTweaks.height = 23
-$LabelPTweaks.location = New-Object System.Drawing.Point(470, 100) #449 541
+$LabelPTweaks.location = New-Object System.Drawing.Point(480, 80) #449 541
 $LabelPTweaks.Font = New-Object System.Drawing.Font('Microsoft Sans Serif', 24)
 
 
