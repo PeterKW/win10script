@@ -27,13 +27,13 @@ If (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]:
 }
 
 $Form = New-Object system.Windows.Forms.Form
-$Form.ClientSize = New-Object System.Drawing.Point(1080, 900) #1050, 700
+$Form.ClientSize = New-Object System.Drawing.Point(1090, 800) #1050, 700
 $Form.text = "Form"
 $Form.TopMost = $false
 
 $Panel1 = New-Object system.Windows.Forms.Panel
-$Panel1.height = 156
-$Panel1.width = 1032
+$Panel1.height = 146 #156
+$Panel1.width = 912 #1032
 $Panel1.location = New-Object System.Drawing.Point(9, 90)
 
 $Label1 = New-Object system.Windows.Forms.Label
@@ -146,11 +146,11 @@ $Label2.Font = New-Object System.Drawing.Font('Microsoft Sans Serif', 10)
 $PanelPTweaks = New-Object system.Windows.Forms.Panel
 $PanelPTweaks.height = 159
 $PanelPTweaks.width = 588
-$PanelPTweaks.location = New-Object System.Drawing.Point(760, 600) #478 600
+$PanelPTweaks.location = New-Object System.Drawing.Point(760, 200) #760 600 #Adjust Here
 
 $Panel2 = New-Object system.Windows.Forms.Panel
 $Panel2.height = 159
-$Panel2.width = 588
+$Panel2.width = 588 #588
 $Panel2.location = New-Object System.Drawing.Point(9, 293)
 
 $Label3 = New-Object system.Windows.Forms.Label
@@ -227,7 +227,7 @@ $Label4.text = "Security"
 $Label4.AutoSize = $true
 $Label4.width = 117
 $Label4.height = 25
-$Label4.location = New-Object System.Drawing.Point(761, 252)
+$Label4.location = New-Object System.Drawing.Point(700, 252) #761 252
 $Label4.Font = New-Object System.Drawing.Font('Microsoft Sans Serif', 24)
 
 $securitylow = New-Object system.Windows.Forms.Button
@@ -400,7 +400,7 @@ $Label22.location = New-Object System.Drawing.Point(4, 14)
 $Label22.Font = New-Object System.Drawing.Font('Microsoft Sans Serif', 10)
 
 $Label23 = New-Object system.Windows.Forms.Label
-$Label23.text = "- Need to Restore action center, cortana, etc.? Run the Restore Script: https://youtu.be/H2ydDcqRZyM"
+$Label23.text = "- Need to Restore action center, cortana, etc.? Run the Restore Script: https://git.io/JTbKD"
 $Label23.AutoSize = $true
 $Label23.width = 150
 $Label23.height = 10
