@@ -420,13 +420,12 @@ $lightmode.height = 30
 $lightmode.location = New-Object System.Drawing.Point(417, 45)
 $lightmode.Font = New-Object System.Drawing.Font('Microsoft Sans Serif', 12)
 
-
 $LabelPTweaks = New-Object system.Windows.Forms.Label #Label20
 $LabelPTweaks.text = "P Essential Tweaks"
 $LabelPTweaks.AutoSize = $true
 $LabelPTweaks.width = 169
 $LabelPTweaks.height = 23
-$LabelPTweaks.location = New-Object System.Drawing.Point(700, 80) #449 541
+$LabelPTweaks.location = New-Object System.Drawing.Point(0, 80) #449 541
 $LabelPTweaks.Font = New-Object System.Drawing.Font('Microsoft Sans Serif', 24)
 
 $pessentialtweaks = New-Object system.Windows.Forms.Button
