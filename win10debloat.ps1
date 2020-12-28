@@ -146,7 +146,7 @@ $Label2.Font = New-Object System.Drawing.Font('Microsoft Sans Serif', 10)
 $PanelPTweaks = New-Object system.Windows.Forms.Panel
 $PanelPTweaks.height = 159
 $PanelPTweaks.width = 588
-$PanelPTweaks.location = New-Object System.Drawing.Point(600, 200) #478 600
+$PanelPTweaks.location = New-Object System.Drawing.Point(400, 600) #478 600
 
 $Panel2 = New-Object system.Windows.Forms.Panel
 $Panel2.height = 159
