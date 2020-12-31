@@ -145,7 +145,7 @@ $Label2.Font = New-Object System.Drawing.Font('Microsoft Sans Serif', 10)
 
 $Panel2 = New-Object system.Windows.Forms.Panel
 $Panel2.height = 159
-$Panel2.width = 588 #588
+$Panel2.width = 588
 $Panel2.location = New-Object System.Drawing.Point(9, 293)
 
 $Label3 = New-Object system.Windows.Forms.Label
@@ -749,33 +749,35 @@ $essentialtweaks.Add_Click( {
 
 		#Stops edge from taking over as the default .PDF viewer
 		Write-Host "Stopping Edge from taking over as the default .PDF viewer"
-		$NoPDF = "HKCR:\.pdf"
-		$NoProgids = "HKCR:\.pdf\OpenWithProgids"
-		$NoWithList = "HKCR:\.pdf\OpenWithList"
-		If (!(Get-ItemProperty $NoPDF  NoOpenWith)) {
-			New-ItemProperty $NoPDF NoOpenWith
-		}
-		If (!(Get-ItemProperty $NoPDF  NoStaticDefaultVerb)) {
-			New-ItemProperty $NoPDF  NoStaticDefaultVerb
-		}
-		If (!(Get-ItemProperty $NoProgids  NoOpenWith)) {
-			New-ItemProperty $NoProgids  NoOpenWith
-		}
-		If (!(Get-ItemProperty $NoProgids  NoStaticDefaultVerb)) {
-			New-ItemProperty $NoProgids  NoStaticDefaultVerb
-		}
-		If (!(Get-ItemProperty $NoWithList  NoOpenWith)) {
-			New-ItemProperty $NoWithList  NoOpenWith
-		}
-		If (!(Get-ItemProperty $NoWithList  NoStaticDefaultVerb)) {
-			New-ItemProperty $NoWithList  NoStaticDefaultVerb
+		# Identify the edge application class
+		$Packages = "HKCU:SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppModel\Repository\Packages"
+		$edge = Get-ChildItem $Packages -Recurse -include "MicrosoftEdge"
+
+		# Specify the paths to the file and URL associations
+		$FileAssocKey = Join-Path $edge.PSPath Capabilities\FileAssociations
+		$URLAssocKey = Join-Path $edge.PSPath Capabilities\URLAssociations
+
+		# get the software classes for the file and URL types that Edge will associate
+		$FileTypes = Get-Item $FileAssocKey
+		$URLTypes = Get-Item $URLAssocKey
+
+		$FileAssoc = Get-ItemProperty $FileAssocKey
+		$URLAssoc = Get-ItemProperty $URLAssocKey
+
+		$Associations = @()
+		$Filetypes.Property | foreach { $Associations += $FileAssoc.$_ }
+		$URLTypes.Property | foreach { $Associations += $URLAssoc.$_ }
+
+		# add registry values in each software class to stop edge from associating as the default
+		foreach ($Association in $Associations) {
+			$Class = Join-Path HKCU:SOFTWARE\Classes $Association
+			#if (Test-Path $class)
+			#   {write-host $Association}
+			# Get-Item $Class
+			Set-ItemProperty $Class -Name NoOpenWith -Value ""
+			Set-ItemProperty $Class -Name NoStaticDefaultVerb -Value ""
 		}
 
-		#Appends an underscore '_' to the Registry key for Edge
-		$Edge = "HKCR:\AppXd4nrz8ff68srnhf9t5a8sbjyar1cr723_"
-		If (Test-Path $Edge) {
-			Set-Item $Edge AppXd4nrz8ff68srnhf9t5a8sbjyar1cr723_
-		}
 
 		#Removes Paint3D stuff from context menu
 		$Paint3Dstuff = @(
@@ -1244,32 +1246,33 @@ $pessentialtweaks.Add_Click( {
 
 		#Stops edge from taking over as the default .PDF viewer
 		Write-Host "Stopping Edge from taking over as the default .PDF viewer"
-		$NoPDF = "HKCR:\.pdf"
-		$NoProgids = "HKCR:\.pdf\OpenWithProgids"
-		$NoWithList = "HKCR:\.pdf\OpenWithList"
-		If (!(Get-ItemProperty $NoPDF  NoOpenWith)) {
-			New-ItemProperty $NoPDF NoOpenWith
-		}
-		If (!(Get-ItemProperty $NoPDF  NoStaticDefaultVerb)) {
-			New-ItemProperty $NoPDF  NoStaticDefaultVerb
-		}
-		If (!(Get-ItemProperty $NoProgids  NoOpenWith)) {
-			New-ItemProperty $NoProgids  NoOpenWith
-		}
-		If (!(Get-ItemProperty $NoProgids  NoStaticDefaultVerb)) {
-			New-ItemProperty $NoProgids  NoStaticDefaultVerb
-		}
-		If (!(Get-ItemProperty $NoWithList  NoOpenWith)) {
-			New-ItemProperty $NoWithList  NoOpenWith
-		}
-		If (!(Get-ItemProperty $NoWithList  NoStaticDefaultVerb)) {
-			New-ItemProperty $NoWithList  NoStaticDefaultVerb
-		}
+		# Identify the edge application class
+		$Packages = "HKCU:SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppModel\Repository\Packages"
+		$edge = Get-ChildItem $Packages -Recurse -include "MicrosoftEdge"
 
-		#Appends an underscore '_' to the Registry key for Edge
-		$Edge = "HKCR:\AppXd4nrz8ff68srnhf9t5a8sbjyar1cr723_"
-		If (Test-Path $Edge) {
-			Set-Item $Edge AppXd4nrz8ff68srnhf9t5a8sbjyar1cr723_
+		# Specify the paths to the file and URL associations
+		$FileAssocKey = Join-Path $edge.PSPath Capabilities\FileAssociations
+		$URLAssocKey = Join-Path $edge.PSPath Capabilities\URLAssociations
+
+		# get the software classes for the file and URL types that Edge will associate
+		$FileTypes = Get-Item $FileAssocKey
+		$URLTypes = Get-Item $URLAssocKey
+
+		$FileAssoc = Get-ItemProperty $FileAssocKey
+		$URLAssoc = Get-ItemProperty $URLAssocKey
+
+		$Associations = @()
+		$Filetypes.Property | foreach { $Associations += $FileAssoc.$_ }
+		$URLTypes.Property | foreach { $Associations += $URLAssoc.$_ }
+
+		# add registry values in each software class to stop edge from associating as the default
+		foreach ($Association in $Associations) {
+			$Class = Join-Path HKCU:SOFTWARE\Classes $Association
+			#if (Test-Path $class)
+			#   {write-host $Association}
+			# Get-Item $Class
+			Set-ItemProperty $Class -Name NoOpenWith -Value ""
+			Set-ItemProperty $Class -Name NoStaticDefaultVerb -Value ""
 		}
 
 		#Removes Paint3D stuff from context menu
