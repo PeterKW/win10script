@@ -9,7 +9,7 @@ $Ask = 'Do you want to run this as an Administrator?
         Select "Yes" to Run as an Administrator
         Select "No" to not run this as an Administrator
 
-        Select "Cancel" to stop the script.'
+		Select "Cancel" to stop the script.'
 
 If (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]'Administrator')) {
 	$Prompt = [System.Windows.MessageBox]::Show($Ask, "Run as an Administrator or not?", $Button, $ErrorIco)
