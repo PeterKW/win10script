@@ -15,6 +15,7 @@ iex ((New-Object System.Net.WebClient).DownloadString('https://git.io/JJ8R4'))
 - O&O Shutup10 CFG and Run
 - Added Install Programs
 - Added Debloat Microsoft Store Apps
+Full GUI Implementation
 
 ## Modifications
 I encourage people to fork this project and comment out things they don't like! Here is a list of normal things people change:
