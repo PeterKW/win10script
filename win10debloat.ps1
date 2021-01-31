@@ -450,7 +450,7 @@ $installchoco.Add_Click( {
 	})
 
 $brave.Add_Click( {
-		$msgBoxInput = [System.Windows.MessageBox]::Show('Which type of Brave would you like to download?', 'Brave Browser', 'NormalNightlyCancel', 'Error')
+		$msgBoxInput = [System.Windows.Forms.MessageBox]::Show('Which type of Brave would you like to download?', 'Brave Browser', 'NormalNightlyCancel', 'Error')
 
 		switch ($msgBoxInput) {
 			'Normal' {
