@@ -450,7 +450,8 @@ $installchoco.Add_Click( {
 	})
 
 $brave.Add_Click( {
-		$msgBoxInput = [System.Windows.Forms.MessageBox]::Show('Which type of Brave would you like to download?', 'Brave Browser', 'NormalNightlyCancel', 'Error')
+
+		<# $msgBoxInput = [System.Windows.Forms.MessageBox]::Show('Which type of Brave would you like to download?', 'Brave Browser', 'NormalNightlyCancel', 'Error')
 
 		switch ($msgBoxInput) {
 			'Normal' {
@@ -465,6 +466,19 @@ $brave.Add_Click( {
 			}
 			'Cancel' {
 				## Do something
+			}
+		} #>
+		$version = Read-Host "Which type of Brave would you like to download? (Blank for orginary / "
+		Switch ($version) {
+			N {
+				Write-Host "Installing Brave Browser Nightly"
+				choco install brave-nightly --pre -y
+				$wshell.Popup("Operation Completed", 0, "Done", 0x0)
+			}
+			default {
+				Write-Host "Installing Brave Browser"
+				choco install brave -y
+				$wshell.Popup("Operation Completed", 0, "Done", 0x0)
 			}
 		}
 	} )
