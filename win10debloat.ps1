@@ -470,7 +470,7 @@ $brave.Add_Click( {
 		} #>
 		Add-Type -AssemblyName Microsoft.VisualBasic
 		try {
-			$version = [Microsoft.VisualBasic.Interaction]::InputBox("Which type of Brave would you like to download? /n (o)rdinary or (n)ightly" , "Brave Browser", "o")
+			$version = [Microsoft.VisualBasic.Interaction]::InputBox("Which type of Brave would you like to download? `n (o)rdinary or (n)ightly" , "Brave Browser")
 		}
 		catch {
 			$version = null;
@@ -479,17 +479,17 @@ $brave.Add_Click( {
 
 		Switch ($version) {
 			N {
-				Write-Host "Installing Brave Browser Nightly"
 				choco install brave-nightly --pre -y
 				$wshell.Popup("Operation Completed", 0, "Done", 0x0)
+				Write-Host "Installing Brave Browser Nightly"
 			}
-			null {
+			"" {
 				Write-Host "Brave install cancelled"
 			}
 			default {
-				Write-Host "Installing Brave Browser - choice "&$version
 				choco install brave -y
-				$wshell.Popup("Operation Completed " + $version, 0, "Done", 0x0)
+				$wshell.Popup("Operation Completed ", 0, "Done", 0x0)
+				Write-Host "Installing Brave Browser"
 			}
 		}
 	} )
